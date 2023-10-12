@@ -19,7 +19,6 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"os"
 
 	"github.com/spf13/cobra"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -70,7 +69,7 @@ func newDeleteClusterCommand(config *internal.Config) *cobra.Command {
 		for i := 0; confirmed == nil && i < 10; i++ {
 			// retry 10 times or until a confirmation is given or denied,
 			// whichever comes first
-			confirmed = confirm(os.Stdin, os.Stdout)
+			confirmed = confirm(config.In, config.Out)
 		}
 
 		if confirmed == nil || !*confirmed {

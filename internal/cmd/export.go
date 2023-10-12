@@ -192,7 +192,7 @@ PostgresCluster.
 	var cliOutput bytes.Buffer
 	cmd.PreRunE = func(cmd *cobra.Command, args []string) error {
 		// error messages should go to both stderr and the CLI log file
-		errMW := io.MultiWriter(os.Stderr, &cliOutput)
+		errMW := io.MultiWriter(config.ErrOut, &cliOutput)
 		cmd.SetErr(errMW)
 		// Messages printed with cmd.Print (those from the 'writeDebug' function)
 		// will go only to the CLI log file. To print to the CLI log file and
