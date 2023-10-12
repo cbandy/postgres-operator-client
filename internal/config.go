@@ -38,8 +38,9 @@ type PatchConfig struct {
 
 func (cfg *PatchConfig) AddFlags(flags *pflag.FlagSet) {
 	// See [k8s.io/kubectl/pkg/cmd/util.AddFieldManagerFlagVar]
+	// - https://docs.k8s.io/reference/using-api/server-side-apply/#managers
 	flags.StringVar(&cfg.FieldManager, "field-manager", cfg.FieldManager,
-		"Name of the manager used to track field ownership.")
+		"Name of the manager used to track Kubernetes API field ownership.")
 }
 
 // CreateOptions returns a copy of opts with fields set according to cfg.

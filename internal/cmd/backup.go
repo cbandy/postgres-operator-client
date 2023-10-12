@@ -66,6 +66,9 @@ pgo backup hippo --repoName="repo1" --options="--type=full"
 	cmdBackup.Flags().StringArrayVar(&backup.Options, "options", []string{},
 		"options for taking a backup; can be used multiple times")
 
+	// Accept configuration for API writes.
+	config.Patch.AddFlags(cmdBackup.Flags())
+
 	// Define the 'backup' command
 	cmdBackup.RunE = func(cmd *cobra.Command, args []string) error {
 

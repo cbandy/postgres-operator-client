@@ -35,9 +35,10 @@ pgo backup CLUSTER_NAME [flags]
 ### Options
 
 ```
-  -h, --help                  help for backup
-      --options stringArray   options for taking a backup; can be used multiple times
-      --repoName string       repoName to backup to
+      --field-manager string   Name of the manager used to track Kubernetes API field ownership. (default "kubectl-pgo")
+  -h, --help                   help for backup
+      --options stringArray    options for taking a backup; can be used multiple times
+      --repoName string        repoName to backup to
 ```
 
 ### Options inherited from parent commands

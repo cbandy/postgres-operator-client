@@ -31,9 +31,10 @@ pgo restore CLUSTER_NAME [flags]
 ### Options
 
 ```
-  -h, --help                  help for restore
-      --options stringArray   options to pass to the "pgbackrest restore" command; can be used multiple times
-      --repoName string       repository to restore from
+      --field-manager string   Name of the manager used to track Kubernetes API field ownership. (default "kubectl-pgo")
+  -h, --help                   help for restore
+      --options stringArray    options to pass to the "pgbackrest restore" command; can be used multiple times
+      --repoName string        repository to restore from
 ```
 
 ### Options inherited from parent commands

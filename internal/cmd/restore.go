@@ -57,6 +57,9 @@ pgo restore hippo --repoName repo1 --options '--type=time --target="2021-06-09 1
 	cmd.Flags().StringVar(&restore.RepoName, "repoName", "",
 		"repository to restore from")
 
+	// Accept configuration for API writes.
+	config.Patch.AddFlags(cmd.Flags())
+
 	// Only one positional argument: the PostgresCluster name.
 	cmd.Args = cobra.ExactArgs(1)
 
@@ -89,6 +92,9 @@ This is recommended after your restore is complete. Running "pgo restore" will e
 	}
 
 	disable := pgBackRestRestoreDisable{Config: config}
+
+	// Accept configuration for API writes.
+	config.Patch.AddFlags(cmd.Flags())
 
 	// Only one positional argument: the PostgresCluster name.
 	cmd.Args = cobra.ExactArgs(1)

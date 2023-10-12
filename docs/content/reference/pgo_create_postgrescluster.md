@@ -28,7 +28,8 @@ pgo create postgrescluster CLUSTER_NAME [flags]
 ### Options
 
 ```
-  -h, --help   help for postgrescluster
+      --field-manager string   Name of the manager used to track Kubernetes API field ownership. (default "kubectl-pgo")
+  -h, --help                   help for postgrescluster
 ```
 
 ### Options inherited from parent commands

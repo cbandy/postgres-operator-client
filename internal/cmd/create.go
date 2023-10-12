@@ -59,6 +59,9 @@ func newCreateClusterCommand(config *internal.Config) *cobra.Command {
 
 	cmd.Args = cobra.ExactArgs(1)
 
+	// Accept configuration for API writes.
+	config.Patch.AddFlags(cmd.Flags())
+
 	cmd.Example = internal.FormatExample(`
 # Create a postgrescluster
 pgo create postgrescluster hippo
