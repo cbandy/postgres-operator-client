@@ -49,7 +49,7 @@ func main() {
 		return "/reference/" + strings.ToLower(base) + "/"
 	}
 
-	pgo := cmd.NewPGOCommand(os.Stdin, os.Stdout, os.Stderr)
+	pgo := cmd.NewPGOCommand("kubectl-pgo", os.Stdin, os.Stdout, os.Stderr)
 	err := doc.GenMarkdownTreeCustom(pgo, "./", filePrepender, linkHandler)
 	if err != nil {
 		log.Fatal(err)

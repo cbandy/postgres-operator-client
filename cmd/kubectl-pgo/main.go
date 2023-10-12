@@ -16,6 +16,7 @@ package main
 
 import (
 	"os"
+	"path/filepath"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
@@ -24,9 +25,11 @@ import (
 )
 
 func main() {
-	flags := pflag.NewFlagSet("kubectl-pgo", pflag.ExitOnError)
+	name := filepath.Base(os.Args[0])
+
+	flags := pflag.NewFlagSet(name, pflag.ExitOnError)
 	pflag.CommandLine = flags
 
-	root := cmd.NewPGOCommand(os.Stdin, os.Stdout, os.Stderr)
+	root := cmd.NewPGOCommand(name, os.Stdin, os.Stdout, os.Stderr)
 	cobra.CheckErr(root.Execute())
 }

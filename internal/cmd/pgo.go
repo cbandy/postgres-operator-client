@@ -16,8 +16,6 @@ package cmd
 
 import (
 	"io"
-	"os"
-	"path/filepath"
 	"regexp"
 
 	"github.com/spf13/cobra"
@@ -34,11 +32,11 @@ const clientVersion = "v0.3.0"
 // NewPGOCommand returns the root command of the PGO plugin. This command
 // prints the same information as its --help flag: the available subcommands
 // and their short descriptions.
-func NewPGOCommand(stdin io.Reader, stdout, stderr io.Writer) *cobra.Command {
+func NewPGOCommand(fieldManager string, stdin io.Reader, stdout, stderr io.Writer) *cobra.Command {
 	config := &internal.Config{
 		ConfigFlags: genericclioptions.NewConfigFlags(true),
 		IOStreams:   genericclioptions.IOStreams{In: stdin, Out: stdout, ErrOut: stderr},
-		Patch:       internal.PatchConfig{FieldManager: filepath.Base(os.Args[0])},
+		Patch:       internal.PatchConfig{FieldManager: fieldManager},
 	}
 
 	root := &cobra.Command{
